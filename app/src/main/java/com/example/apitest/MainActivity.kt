@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
         input = binding.editText
         output = binding.textView
         val apiClient = ApiClient()
-        val conversationId = "JX7ax64wrdyv"
-        val accessToken = "DigQJqpk291KOjiwKZLWpkflVupf5KfZaQ3DqFdi"
+        val conversationId = "<conversation_ID"
+        val accessToken = "<api key>"
 
         val coroutineScope = CoroutineScope(Dispatchers.Main)
 
@@ -42,8 +42,6 @@ class MainActivity : AppCompatActivity() {
 
         testButton.setOnClickListener {
             val prompt = input.text.toString()
-            val conversationId = "<conversation_ID"
-            val accessToken = "<api key>"
 
             // Launch a coroutine within the coroutineScope
             coroutineScope.launch {
