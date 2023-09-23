@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var testButton: Button
     private lateinit var input: EditText
     private lateinit var output: TextView
+    private var isButtonClickable = true
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -30,23 +31,29 @@ class MainActivity : AppCompatActivity() {
         input = binding.editText
         output = binding.textView
         val apiClient = ApiClient()
-        val conversationId = "<conversation_ID"
-        val accessToken = "<api key>"
+        val conversationId = "<Conversation_ID>"
+        val accessToken = "<API_KEY>"
 
         val coroutineScope = CoroutineScope(Dispatchers.Main)
 
 
-//        println("Response: $response")
 
         var reply = abc()
 
         testButton.setOnClickListener {
-            val prompt = input.text.toString()
-
-            // Launch a coroutine within the coroutineScope
-            coroutineScope.launch {
-                val response = apiClient.generateMessage(prompt, conversationId, accessToken)
-                output.text = response
+            if (isButtonClickable) {
+                val prompt = input.text.toString()
+                testButton.isEnabled = false
+                CoroutineScope(Dispatchers.Main).launch {
+                    try {
+                        val response = apiClient.generateMessage(prompt, conversationId, accessToken)
+                        output.text = response
+                    } catch (e: Exception) {
+                        output.text = "An error occurred: ${e.message}"
+                    } finally {
+                        testButton.isEnabled = true
+                    }
+                }
             }
         }
     }
