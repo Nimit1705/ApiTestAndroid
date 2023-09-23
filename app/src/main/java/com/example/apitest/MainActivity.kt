@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
         input = binding.editText
         output = binding.textView
         val apiClient = ApiClient()
-        val conversationId = "Volej0qEBbjN"
-        val accessToken = "JdaIIsNvdvWNwwYEz5D9vTqau9t9r0GZmCoGjgJT"
+        val conversationId = "<Conversation_ID>"
+        val accessToken = "<API_Key>"
 
         val coroutineScope = CoroutineScope(Dispatchers.Main)
 
