@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
 
         testButton.setOnClickListener {
             val prompt = input.text.toString()
-            val conversationId = "JX7ax64wrdyv"
-            val accessToken = "DigQJqpk291KOjiwKZLWpkflVupf5KfZaQ3DqFdi"
+            val conversationId = "<conversation_ID"
+            val accessToken = "<api key>"
 
             // Launch a coroutine within the coroutineScope
             coroutineScope.launch {
