@@ -31,11 +31,10 @@ class MainActivity : AppCompatActivity() {
         input = binding.editText
         output = binding.textView
         val apiClient = ApiClient()
-        val conversationId = "<Conversation_ID>"
-        val accessToken = "<API_KEY>"
+        val conversationId = "Volej0qEBbjN"
+        val accessToken = "JdaIIsNvdvWNwwYEz5D9vTqau9t9r0GZmCoGjgJT"
 
         val coroutineScope = CoroutineScope(Dispatchers.Main)
-
 
 
         var reply = abc()
@@ -44,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             if (isButtonClickable) {
                 val prompt = input.text.toString()
                 testButton.isEnabled = false
+                output.text = "Loading..."
                 CoroutineScope(Dispatchers.Main).launch {
                     try {
                         val response = apiClient.generateMessage(prompt, conversationId, accessToken)
